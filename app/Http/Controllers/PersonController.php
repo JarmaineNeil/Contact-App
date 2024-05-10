@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Person;
 use App\Http\Controllers\Controller;
+use App\Models\Business;
 use Illuminate\Http\Request;
 
 class PersonController extends Controller
@@ -14,9 +15,8 @@ class PersonController extends Controller
     public function index()
     {
         //
-        $people = Person::all();
 
-        return view('person.index')->with('people',$people);
+        return view('person.index')->with('people',Person::all());
     }
 
     /**
@@ -26,7 +26,7 @@ class PersonController extends Controller
     {
         //
         
-        return view('person.create');
+        return view('person.create')->with('businesses',Business::all());
     }
 
     /**
@@ -48,6 +48,7 @@ class PersonController extends Controller
         $person->lastname = $request->input('lastname');
         $person->email = $request->input('email');
         $person->phone = $request->input('phone');
+        $person->business_id = $request->input('business_id');
         $person->save();
 
         return redirect(route('person.index'));
@@ -67,7 +68,7 @@ class PersonController extends Controller
     public function edit(Person $person)
     {
         //
-        return view('person.edit')->with('person',$person);
+        return view('person.edit')->with(['person'=> $person, 'businesses'=> Business::all()]);
     }
 
     /**
@@ -86,6 +87,7 @@ class PersonController extends Controller
         $person->lastname = $request->input('lastname');
         $person->email = $request->input('email');
         $person->phone = $request->input('phone');
+        $person->business_id = $request->input('business_id');
         $person->save();
 
         return redirect(route('person.index'));

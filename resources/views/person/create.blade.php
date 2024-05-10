@@ -17,23 +17,36 @@
                 <div class=" grid grid-cols-1 sm:grid-cols-6 gap-6">
                     <span class="sm:col-span-3">
                         <label class="block" for="firstname">First Name</label>
-                        <input class="block w-full" type="text" name="firstname" id="firstname" value="{{old('firstname')}}">
+                        <input class="block w-full text-black" type="text" name="firstname" id="firstname" value="{{old('firstname')}}">
                     </span>
                     <span class="sm:col-span-3">
                         <label class="block" for="lastname">Last Name</label>
-                        <input class="block w-full" type="text" name="lastname" id="lastname" value="{{old('lastname')}}">
+                        <input class="block w-full text-black" type="text" name="lastname" id="lastname" value="{{old('lastname')}}">
                     </span>
                 </div>
 
                 <div class=" grid grid-cols-1 sm:grid-cols-6 gap-6">
                     <span class="sm:col-span-3">
                         <label class="block" for="email">Email</label>
-                        <input class="block w-full" type="text" name="email" id="email" value="{{old('email')}}">
+                        <input class="block w-full text-black" type="text" name="email" id="email" value="{{old('email')}}">
                     </span>
                     <span class="sm:col-span-3">
                         <label class="block" for="phone">Phone</label>
-                        <input class="block w-full" type="text" name="phone" id="phone" value="{{old('phone')}}">
+                        <input class="block w-full text-black" type="text" name="phone" id="phone" value="{{old('phone')}}">
                     </span>
+
+                    <span class="sm:col-span-3">
+                        <label class="block" for="business">Business</label>
+                        <select class="block w-full text-black" type="text" name="business_id" id="business_id">
+                            <option value="" selected>( No Business )</option>
+                        @foreach($businesses as $business)
+                           <option value="{{$business->id}}@selected($business->id == old('business_id'))">
+                            {{$business->business_name}}
+                            </option> 
+                        @endforeach
+                        </select>
+                    </span>
+
                 </div>
 
                 <div class="mt-6 flex items-center justify-end gap-x-6">

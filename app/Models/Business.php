@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Person extends Model
+class Business extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory,SoftDeletes;
 
-    public function business(){
-        return $this->belongsTo(Business::class);
+    public function people(){
+        return $this->hasMany(Person::class);
     }
 }
